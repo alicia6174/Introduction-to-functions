@@ -17,8 +17,14 @@ void g(int a = 10, int b = 20)
 
 }
 
-class CS {
+class CS 
+{
     public:
+        CS(void)
+        {
+
+        }
+
         void show(void)
         {
             printf("this is cs\n");
@@ -27,8 +33,20 @@ class CS {
         void useMshow(void)
         {
             mshow();
-
         }
+
+        static void st_function(void)
+        {
+            printf("this is a static function\n");
+        }
+
+        int val_a;
+
+        void showA(void) const
+        {
+            printf("a = %d\n", val_a);
+        }
+
 
     private:
         void mshow(void)
@@ -41,12 +59,9 @@ class CS {
 
 int main(int argc, const char * argv[])
 {
-    f(1,2);
-    f(1);
+    const CS cs;
 
-    g();
+    cs.showA();
 
-    CS cs;
-    cs.show();
     return 0;
 }

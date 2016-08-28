@@ -21,7 +21,10 @@ example -
 
 
 ### functions in classes ###
+* static member function (it is NOT belongs to any object)
 * member function
+* const member function
+` void showA(void) const;`
 
 
 
