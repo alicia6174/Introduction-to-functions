@@ -13,9 +13,15 @@ example -
 
 `void f(int)` and `void f(int, int)`. 
 
+### function default values of arguments ###
+`void f(int a = 10)`
+(define or declaration)
+
+(a kind of function overloaded)
 
 
-
+### functions in classes ###
+* member function
 
 
 
