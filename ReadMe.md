@@ -1,41 +1,42 @@
-# C++ Class #
-
-## assignment and initialize ##
+### assignment and initialize ###
 `int a; a = 10` (assignment)
 
 `int a = 10` (initialize)
 
-## functions ##
+### functions ###
 * function (C & C++)
 * member function (C++ only)
-
-* static function (local to file)
-* static member function
+* static function (local to file, can't be used by other files)
+* static member function (see below)
 
 ### function overloaded (C++ only) ###
-* A function has more than two prototypes.
-example -
+* This property means that a function has more than two prototypes.
 
-`void f(int)` and `void f(int, int)`. 
+ For example -
+
+ `void f(int)` and `void f(int, int)`. 
 
 ### function default values of arguments ###
-`void f(int a = 10)`
-(define or declaration)
+* It is a kind of function overloaded.
 
-(a kind of function overloaded)
+ For example -
+
+ `void f(int a = 10)`
+ (define or declaration)
+
 
 
 ### functions in classes ###
-* static member function (it is NOT belongs to any object)
 * member function
-* const member function
+* static member function (DOES NOT belong to any object but class)
+* const member function (DOES NOT change any value)
 ` void showA(void) const;`
 
 
-#### special member function ####
+### special member function ###
 * constructor
 
-	initial list
+ * initial list
 	
 ```c++
 class CS
@@ -62,26 +63,11 @@ public:
 * destructor
 
 
-# Referance #
+### Referance ###
 ```c++
 int b;
 int &a = b;
 ```
 
-
-
-
-
-
-
-
-
-```c++
-class CS
-{
-
-
-
-};
-```
-
+### Example ###
+* Use C-string to implement all the member functions of std::string.

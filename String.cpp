@@ -1,111 +1,116 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void f(int , int)
+
+class String
 {
-    printf("this is f(int, int)\n");
-}
+    int m_size;
+    char * m_buf;
 
+    void copyCStr(const char *buf)
+    {
+        int s = strlen(buf);
+        m_buf = new char[s+1];
+        strcpy(m_buf, buf);
+        m_size = s;
+    }
 
-void f(int)
-{
-    printf("this is f(int)\n");
-}
-
-void g(int a = 10, int b = 20)
-{
-    printf("this is g, a = %d b = %d\n", a, b);
-
-}
-
-class CS
-{
     public:
-        int va, vb;
-
-        //initialize list
-        CS(void):
-            va(10),
-            vb(20)
+        String(void):
+            m_size(0),
+            m_buf(NULL)
         {
-        }
-
-        //this is the copy constructor
-        CS(const CS & cs)
-        {
-            printf("this is the copy constructor\n");
-            va = cs.va;
-            vb = 999;
 
         }
 
-        CS& operator=(const CS & cs)
+        String(const char * buf):
+            m_size(0),
+            m_buf(NULL)
         {
-            printf("operator = \n");
+            copyCStr(buf);
+
+        }
+
+        bool empty(void) const
+        {
+            return m_size == 0;
+        }
+
+        int size() const
+        {
+            return m_size;
+        }
+
+        void show(void) const
+        {
+            if (empty())
+            {
+                printf("string is empty!\n");
+                return;
+            }
+
+            printf("%s\n", m_buf);
+        }
+
+        const char * c_str(void) const
+        {
+            return m_buf;
+        }
+
+
+        String & operator=(const char * buf)
+        {
+            printf("operator = ..\n");
+            delete [] m_buf;
+            copyCStr(buf);
             return *this;
-
-        }
-#if 0
-        //assignment
-        CS(void)
-        {
-            va = 10;
-            vb = 20;
-        }
-#endif
-
-        CS(int a, int b):
-            va(a),
-            vb(b)
-        {
         }
 
-        void show(void)
+        void strCat(const char *buf)
         {
-            printf("this is cs\n");
+            if (empty())
+            {
+                copyCStr(buf);
+                return;
+            }
+
+            char * ret = new char[m_size + strlen(buf) + 1];
+            strcpy(ret, m_buf);
+            strcat(ret, buf);
+            delete [] m_buf;
+            m_buf = ret;
+            m_size += strlen(buf);
         }
 
-        void useMshow(void)
+        String & operator+(const String & s)
         {
-            mshow();
+            strCat(s.m_buf);
+            return *this;
         }
 
-        static void st_function(void)
+        String & operator+(const char *buf)
         {
-            printf("this is a static function\n");
-        }
-
-        int val_a;
-
-        void showA(void) const
-        {
-            printf("a = %d\n", val_a);
-        }
-
-
-    private:
-        void mshow(void)
-        {
-            printf("this is m show\n");
-
+            strCat(buf);
+            return *this;
         }
 };
 
 
-CS ff(CS cs)
-{
-    return cs;
-
-}
 
 int main(int argc, const char * argv[])
 {
-    CS cs1(100, 200);
 
-    ff(cs1);
+    String str;
 
+    str = "haha";
+    str.show();
+    printf("size = %d\n", str.size());
 
-//    printf("cs2 : va vb =  %d, %d\n", cs2.va, cs2.vb);
-
+    String s2("thisS2");
+    str = str + s2 + "aaaa";
+    str.show();
+    printf("size = %d\n", str.size());
 
     return 0;
 }
