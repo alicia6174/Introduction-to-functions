@@ -37,6 +37,11 @@ class String
             return m_size == 0;
         }
 
+        int size() const
+        {
+            return m_size;
+        }
+
         void show(void) const
         {
             if (empty())
@@ -62,6 +67,21 @@ class String
             return *this;
         }
 
+        void strCat(const char *buf)
+        {
+            if (empty())
+            {
+                copyCStr(buf);
+                return;
+            }
+
+            char * ret = new char[m_size + strlen(buf) + 1];
+            strcpy(ret, m_buf);
+            strcat(ret, buf);
+            delete [] m_buf;
+            m_buf = ret;
+            m_size += strlen(buf);
+        }
 
 };
 
@@ -74,5 +94,10 @@ int main(int argc, const char * argv[])
 
     str = "haha";
     str.show();
+    printf("size = %d\n", str.size());
+    str.strCat("kaka");
+    str.show();
+    printf("size = %d\n", str.size());
+
     return 0;
 }
