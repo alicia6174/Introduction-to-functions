@@ -17,12 +17,31 @@ void g(int a = 10, int b = 20)
 
 }
 
-class CS 
+class CS
 {
     public:
+        int va, vb;
+
+        //initialize list
+        CS(void):
+            va(10),
+            vb(20)
+        {
+        }
+
+#if 0
+        //assignment
         CS(void)
         {
+            va = 10;
+            vb = 20;
+        }
+#endif
 
+        CS(int a, int b):
+            va(a),
+            vb(b)
+        {
         }
 
         void show(void)
@@ -56,41 +75,12 @@ class CS
         }
 };
 
-void SwapPtr(int *a, int *b)
-{
-    int tmp = *a;
-    *a  = *b;
-    *b = tmp;
-}
-
-void SwapRef(int &a, int &b)
-{
-    int tmp = a;
-    a  = b;
-    b = tmp;
-}
-
-class Heavy
-{
-    int a[128];
-};
-
-void HeavyFunc(Heavy &hv)
-{
-
-}
 
 int main(int argc, const char * argv[])
 {
     int a = 10;
-    int b = 20;
+    int b(10);
 
-    //SwapPtr(&a, &b);
-    SwapRef(a, b);
-    printf("a = %d, b = %d\n", a, b);
-
-    Heavy hv;
-    printf("%lu\n", sizeof(hv));
 
     return 0;
 }

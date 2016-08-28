@@ -1,5 +1,10 @@
 # C++ Class #
 
+## assignment and initialize ##
+`int a; a = 10` (assignment)
+
+`int a = 10` (initialize)
+
 ## functions ##
 * function (C & C++)
 * member function (C++ only)
@@ -29,6 +34,31 @@ example -
 
 #### special member function ####
 * constructor
+
+	initial list
+	
+```c++
+class CS
+{
+public:
+	int a;
+	int b;
+	CS(void):
+		a(10),
+		b(20)
+	{
+	}
+
+};
+```
+
+
+* default constructor
+	`CS(void)` or `CS(int a = 10)`
+
+	* copy constructor
+	* constructor 
+
 * destructor
 
 
