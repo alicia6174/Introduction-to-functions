@@ -29,6 +29,21 @@ class CS
         {
         }
 
+        //this is the copy constructor
+        CS(const CS & cs)
+        {
+            printf("this is the copy constructor\n");
+            va = cs.va;
+            vb = 999;
+
+        }
+
+        CS& operator=(const CS & cs)
+        {
+            printf("operator = \n");
+            return *this;
+
+        }
 #if 0
         //assignment
         CS(void)
@@ -76,10 +91,20 @@ class CS
 };
 
 
+CS ff(CS cs)
+{
+    return cs;
+
+}
+
 int main(int argc, const char * argv[])
 {
-    int a = 10;
-    int b(10);
+    CS cs1(100, 200);
+
+    ff(cs1);
+
+
+//    printf("cs2 : va vb =  %d, %d\n", cs2.va, cs2.vb);
 
 
     return 0;
