@@ -8,6 +8,14 @@ class String
     int m_size;
     char * m_buf;
 
+    void copyCStr(const char *buf)
+    {
+        int s = strlen(buf);
+        m_buf = new char[s+1];
+        strcpy(m_buf, buf);
+        m_size = s;
+    }
+
     public:
         String(void):
             m_size(0),
@@ -20,10 +28,7 @@ class String
             m_size(0),
             m_buf(NULL)
         {
-            int s = strlen(buf);
-            m_buf = new char[s+1];
-            strcpy(m_buf, buf);
-            m_size = s;
+            copyCStr(buf);
 
         }
 
@@ -47,6 +52,17 @@ class String
         {
             return m_buf;
         }
+
+
+        String & operator=(const char * buf)
+        {
+            printf("operator = ..\n");
+            delete [] m_buf;
+            copyCStr(buf);
+            return *this;
+        }
+
+
 };
 
 
@@ -54,8 +70,9 @@ class String
 int main(int argc, const char * argv[])
 {
 
-    String str("hello");
-    printf("%s\n", str.c_str());
+    String str;
 
+    str = "haha";
+    str.show();
     return 0;
 }
