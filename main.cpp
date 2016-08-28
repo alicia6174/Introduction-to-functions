@@ -83,6 +83,17 @@ class String
             m_size += strlen(buf);
         }
 
+        String & operator+(const String & s)
+        {
+            strCat(s.m_buf);
+            return *this;
+        }
+
+        String & operator+(const char *buf)
+        {
+            strCat(buf);
+            return *this;
+        }
 };
 
 
@@ -95,7 +106,9 @@ int main(int argc, const char * argv[])
     str = "haha";
     str.show();
     printf("size = %d\n", str.size());
-    str.strCat("kaka");
+
+    String s2("thisS2");
+    str = str + s2 + "aaaa";
     str.show();
     printf("size = %d\n", str.size());
 
