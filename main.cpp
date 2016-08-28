@@ -56,12 +56,41 @@ class CS
         }
 };
 
+void SwapPtr(int *a, int *b)
+{
+    int tmp = *a;
+    *a  = *b;
+    *b = tmp;
+}
+
+void SwapRef(int &a, int &b)
+{
+    int tmp = a;
+    a  = b;
+    b = tmp;
+}
+
+class Heavy
+{
+    int a[128];
+};
+
+void HeavyFunc(Heavy &hv)
+{
+
+}
 
 int main(int argc, const char * argv[])
 {
-    const CS cs;
+    int a = 10;
+    int b = 20;
 
-    cs.showA();
+    //SwapPtr(&a, &b);
+    SwapRef(a, b);
+    printf("a = %d, b = %d\n", a, b);
+
+    Heavy hv;
+    printf("%lu\n", sizeof(hv));
 
     return 0;
 }

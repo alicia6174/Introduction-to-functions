@@ -27,6 +27,21 @@ example -
 ` void showA(void) const;`
 
 
+#### special member function ####
+* constructor
+* destructor
+
+
+# Referance #
+```c++
+int b;
+int &a = b;
+```
+
+
+
+
+
 
 
 
